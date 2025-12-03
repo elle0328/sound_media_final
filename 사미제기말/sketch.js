@@ -7,6 +7,21 @@ function handleFile(file) {
   song = loadSound(file.data, () => console.log("Music Load Success"));
 }
 
+// HTML 요소 가져오기
+const addFileBtn = document.getElementById("addFileBtn");
+const fileInput = document.getElementById("fileInput");
+
+// + 버튼 클릭 → 숨겨진 input 실행
+addFileBtn.addEventListener("click", () => {
+  fileInput.click();
+});
+
+// 파일 선택 후 처리
+fileInput.addEventListener("change", e => {
+  let file = e.target.files[0];
+  if (file) handleFile(file);  // handleFile은 기존 sketch.js에 정의된 함수
+});
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
