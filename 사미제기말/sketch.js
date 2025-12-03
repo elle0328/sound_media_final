@@ -11,7 +11,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
 
-  fft = new p5.FFT(0.7, 128);
+  fft = new p5.FFT(0.8, 2048);
   amp = new p5.Amplitude();
 
   let fileInput = document.getElementById("fileInput");
@@ -41,52 +41,38 @@ function keyPressed() {
 }
 
 function draw() {
-  background(0, 30); 
+  background(10, 10, 30, 50);
 
   if (!song) {
-    fill(255);
+    fill(230, 255, 255);
     textSize(24);
     textAlign(CENTER, CENTER);
     text("오디오 파일을 업로드하세요", width / 2, height / 2);
     return;
   }
 
-  // 분석 값 가져오기
-  let level = amp.getLevel();            
-  let radius = map(level, 0, 0.2, 80, 600);
-
-  let spectrum = fft.analyze();         
   let waveform = fft.waveform();
+  let level = amp.getLevel();
 
   let col;
-  if (colorModeIdx === 0) col = color(255, 50, 50);
-  if (colorModeIdx === 1) col = color(50, 255, 200);
-  if (colorModeIdx === 2) col = color(150, 50, 255);
+  if (colorModeIdx === 0) col = color(0, 255, 255);
+  if (colorModeIdx === 1) col = color(255, 0, 255); 
+  if (colorModeIdx === 2) col = color(255, 255, 0); 
 
-  push();
-translate(width / 2, height / 2);
+  noFill();
+  stroke(col);
+  strokeWeight(4 + level * 50);
 
-noStroke();
-fill(col);
+  beginShape();
+  for (let i = 0; i < waveform.length; i++) {
+    let x = map(i, 0, waveform.length, 0, width);
+    let y = map(waveform[i], -1, 1, height * 0.2, height * 0.8);
 
-let pulsing = map(level, 0, 0.1, 100, 800);
-ellipse(0, 0, pulsing);
+    stroke(col);
+    vertex(x, y);
+  }
+  endShape();
 
-stroke(col);
-strokeWeight(3);
-beginShape();
-for (let i = 0; i < spectrum.length; i++) {
-  let angle = map(i, 0, spectrum.length, 0, 360);
-  let ampVal = spectrum[i];
-  let r = map(ampVal, 0, 255, radius, radius + 400);
-  let x = r * cos(angle);
-  let y = r * sin(angle);
-  vertex(x, y);
-}
-endShape(CLOSE);
-pop();
-
-  noStroke();
-  fill(col);
-  ellipse(width / 2, height / 2, radius, radius);
+  drawingContext.shadowBlur = 40 + level * 200;
+  drawingContext.shadowColor = col;
 }
