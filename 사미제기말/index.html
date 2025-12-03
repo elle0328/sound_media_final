@@ -16,11 +16,13 @@
   <h1>Music Visualizer</h1>
 
   <div class="controls">
+    <!-- 커스텀 파일 선택 버튼 -->
+    <button id="addFileBtn">＋</button>
     <button id="playBtn">▶</button>
     <button id="stopBtn">⏹</button>
   </div>
 
-  <input type="file" id="fileInput" accept="audio/*">
+  <input type="file" id="fileInput" accept="audio/*" style="display:none;">
 
   <!-- p5.js 스케치 연결 -->
   <script src="sketch.js"></script>
