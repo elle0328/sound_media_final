@@ -2,26 +2,27 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Audio Visualizer</title>
+  <title>Music Visualizer</title>
 
-  <!-- p5.js + p5.sound -->
+  <!-- CSS 파일 연결 -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- p5.js & p5.sound import -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
-
-  <style>
-    body { margin: 0; background: #000; color: white; font-family: Arial; }
-    #ui { position: absolute; top: 10px; left: 10px; z-index: 10; }
-    button { margin-right: 8px; padding: 6px 14px; font-size: 15px; }
-  </style>
 </head>
 <body>
-  <div id="ui">
-    <input type="file" id="fileInput" accept="audio/*">
-    <button id="playBtn">Play / Pause</button>
-    <button id="stopBtn">Stop</button>
-    <p>키보드 1/2/3 → 색상 모드 변경</p>
+
+  <h1>Music Visualizer</h1>
+
+  <div class="controls">
+    <button id="playBtn">▶</button>
+    <button id="stopBtn">⏹</button>
   </div>
 
+  <input type="file" id="fileInput" accept="audio/*">
+
+  <!-- p5.js 스케치 연결 -->
   <script src="sketch.js"></script>
 </body>
 </html>
