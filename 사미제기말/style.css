@@ -1,8 +1,9 @@
+/* 🌟 캔버스 그림자 */
 canvas {
-  filter: drop-shadow(0 0 25px #CBBDEB);
+  filter: drop-shadow(0 0 28px #e7d6ff);
 }
 
-/* Header - Emoji Only */
+/* 🎵 상단 타이틀 */
 .title {
   display: flex;
   align-items: center;
@@ -12,61 +13,64 @@ canvas {
   user-select: none;
 }
 
+/* 🎵 타이틀 이모지 스타일 */
 .note {
-  font-size: 48px;
+  font-size: 60px;
   line-height: 1;
   filter: drop-shadow(0 0 14px #CBBDEB);
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* 🎵 Realtime Heartbeat glow while playing */
+/* 🎵 재생 중 하트/이모지 이펙트 */
 .title.playing .note {
   transform: scale(1.18);
   filter: drop-shadow(0 0 30px #FFFFFF);
 }
 
+/* 🌸 배경 + 땡땡이 무늬 */
 body {
-  background: linear-gradient(135deg, #0a0611, #1c1034);
-  color: #E9D9FF;     /* text color soft lavender */
+  background: #f7ecff; /* 밝은 파스텔 라일락 */
+  background-image: 
+    radial-gradient(#e3caff 4px, transparent 4px),
+    radial-gradient(#e3caff 4px, transparent 4px);
+  background-size: 70px 70px;     /* 땡땡이 간격/크기 */
+  background-position: 0 0, 35px 35px;
+
+  color: #6A5B8E;
   font-family: 'Orbitron', sans-serif;
   text-align: center;
+  overflow: hidden;
 }
 
-/* 🎛 Button style */
+/* 🎛️ 일반 버튼 기본 */
 button {
   width: 60px;
   height: 60px;
   border-radius: 14px;
   font-size: 28px;
   font-weight: bold;
-
-  background: linear-gradient(145deg, #2b1f44, #120c1f);
-  border: 2px solid #D4C6EF;
-  color: #E9D9FF;
-
-  text-shadow: 0 0 5px #E7D7FF;
-  box-shadow: 0 0 12px #CBBDEB, inset 0 0 10px #CBBDEB33;
-
-  margin: 10px;
   cursor: pointer;
+
+  background: #f2d9ff;        /* 버튼 내부 밝은 라일락 */
+  color: #6A5B8E;             /* 글자 - 파스텔 딥라일락 */
+  border: 2px solid #c9b3ff;  /* 테두리 */
+  box-shadow: 0 0 12px #e1cfff80;
   transition: 0.25s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
+/* 🎛️ 버튼 hover */
 button:hover {
-  background: linear-gradient(145deg, #3e2b62, #1a1030);
-  box-shadow: 0 0 25px #E3D5FF, 0 0 12px #E3D5FF inset;
-  text-shadow: 0 0 12px #FFFFFF;
+  transform: translateY(-4px) scale(1.08);
+  background: #f7e6ff;
+  box-shadow: 0 0 20px #e7d6ff;
 }
 
+/* 🎛️ 버튼 클릭(active) */
 button:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 10px #D4C6EF;
+  transform: scale(0.92);
 }
 
-/* bottom control layout */
+/* 🎛️ 하단 컨트롤 레이아웃 */
 .controls {
   position: absolute;
   bottom: 40px;
@@ -76,20 +80,29 @@ button:active {
   gap: 25px;
 }
 
+/* 🎛️ 컨트롤 버튼 기본 */
 .ctrl-btn {
   font-size: 32px;
   border-radius: 14px;
-  color: #E9D9FF;
-  background: linear-gradient(145deg, #2b1f44, #120c1f);
-  box-shadow:
-    0 0 12px #CBBDEB77,
-    inset 0 0 12px #CBBDEB55,
-    0 0 24px #CBBDEB44;
+
+  width: 60px;
+  height: 60px;
+
+  background: #f2d9ff;            /* 밝은 핑크 라일락 */
+  color: #6A5B8E;                 /* 글씨 딥라일락 */
+  border: 2px solid #c9b3ff;
+  box-shadow: 0 0 14px #e1cfff80;
+  transition: 0.25s;
 }
 
+/* 🎛️ 컨트롤 hover */
 .ctrl-btn:hover {
   transform: translateY(-4px) scale(1.08);
-  box-shadow:
-    0 0 22px #E3D5FF,
-    inset 0 0 16px #E3D5FF66;
+  background: #f7e6ff;
+  box-shadow: 0 0 20px #e7d6ff;
+}
+
+/* 🎛️ 컨트롤 클릭(active) */
+.ctrl-btn:active {
+  transform: scale(0.92);
 }
