@@ -13,21 +13,26 @@
 </head>
 <body>
 
-  <!-- 🎵 상단 이모지 타이틀 -->
-  <div class="title">
-    <span class="note">🎵</span>
-  </div>
+  <div class="player-container">
+    <!-- 🎵 상단 이모지 타이틀 -->
+    <div class="title">
+      <span class="note">🎵</span>
+    </div>
 
-  <!-- 🎛️ 하단 컨트롤 버튼 -->
-  <div class="controls">
-    <button id="addFileBtn" class="ctrl-btn">＋</button>
-    <button id="playBtn" class="ctrl-btn">▶</button>
-    <button id="pauseBtn" class="ctrl-btn">⏸</button>
-    <button id="stopBtn" class="ctrl-btn">⏹</button>
-  </div>
+    <!-- 🎨 캔버스 (p5.js) -->
+    <div id="canvas-container"></div>
 
-  <!-- 🎧 오디오 파일 선택 input (숨김) -->
-  <input type="file" id="fileInput" accept="audio/*" hidden>
+    <!-- 🎛️ 하단 컨트롤 버튼 -->
+    <div class="controls">
+      <button id="addFileBtn" class="ctrl-btn">＋</button>
+      <button id="playBtn" class="ctrl-btn">▶</button>
+      <button id="pauseBtn" class="ctrl-btn">⏸</button>
+      <button id="stopBtn" class="ctrl-btn">⏹</button>
+    </div>
+
+    <!-- 🎧 오디오 파일 선택 input (숨김) -->
+    <input type="file" id="fileInput" accept="audio/*" hidden>
+  </div>
 
   <!-- 🎨 스케치 JS -->
   <script src="sketch.js"></script>
