@@ -4,7 +4,7 @@ let colorModeIdx = 0;
 
 function handleFile(file) {
   if (song) song.stop();
-  song = loadSound(file.data, () => console.log("Music Load Success"));
+  song = loadSound(file, () => console.log("Music Load Success"));
 }
 
 // HTML 요소 가져오기
@@ -19,7 +19,7 @@ addFileBtn.addEventListener("click", () => {
 // 파일 선택 후 처리
 fileInput.addEventListener("change", e => {
   let file = e.target.files[0];
-  if (file) handleFile(file);  // handleFile은 기존 sketch.js에 정의된 함수
+  if (file) handleFile(file);
 });
 
 function setup() {
@@ -28,12 +28,6 @@ function setup() {
 
   fft = new p5.FFT(0.8, 2048);
   amp = new p5.Amplitude();
-
-  let fileInput = document.getElementById("fileInput");
-  fileInput.addEventListener("change", e => {
-    let file = e.target.files[0];
-    if (file) handleFile(file);
-  });
 
   document.getElementById("playBtn").addEventListener("click", playPause);
   document.getElementById("stopBtn").addEventListener("click", stopSong);
@@ -71,8 +65,8 @@ function draw() {
 
   let col;
   if (colorModeIdx === 0) col = color(0, 255, 255);
-  if (colorModeIdx === 1) col = color(255, 0, 255); 
-  if (colorModeIdx === 2) col = color(255, 255, 0); 
+  if (colorModeIdx === 1) col = color(255, 0, 255);
+  if (colorModeIdx === 2) col = color(255, 255, 0);
 
   noFill();
   stroke(col);
@@ -82,8 +76,6 @@ function draw() {
   for (let i = 0; i < waveform.length; i++) {
     let x = map(i, 0, waveform.length, 0, width);
     let y = map(waveform[i], -1, 1, height * 0.2, height * 0.8);
-
-    stroke(col);
     vertex(x, y);
   }
   endShape();
