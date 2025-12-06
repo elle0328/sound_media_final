@@ -1,31 +1,95 @@
+canvas {
+  filter: drop-shadow(0 0 25px #CBBDEB);
+}
+
+/* Header - Emoji Only */
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  margin-bottom: 24px;
+  user-select: none;
+}
+
+.note {
+  font-size: 48px;
+  line-height: 1;
+  filter: drop-shadow(0 0 14px #CBBDEB);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* 🎵 Realtime Heartbeat glow while playing */
+.title.playing .note {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 30px #FFFFFF);
+}
+
 body {
-  background: linear-gradient(135deg, #0c0316, #0b0446);
-  color: #0ff7ff;
+  background: linear-gradient(135deg, #0a0611, #1c1034);
+  color: #E9D9FF;     /* text color soft lavender */
   font-family: 'Orbitron', sans-serif;
   text-align: center;
 }
 
+/* 🎛 Button style */
 button {
-  width: 60px;           /* 버튼 가로 */
-  height: 60px;          /* 버튼 세로 */
-  border-radius: 12px;
-  font-size: 28px;       /* 아이콘 크기 통일 */
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  font-size: 28px;
   font-weight: bold;
-  background: linear-gradient(145deg, #555, #222); /* 금속 느낌 */
-  border: 2px solid #0ff; /* LED 테두리 */
-  color: #0ff;
-  text-shadow: 0 0 6px #0ff;
-  box-shadow: 0 0 15px #0ff;
+
+  background: linear-gradient(145deg, #2b1f44, #120c1f);
+  border: 2px solid #D4C6EF;
+  color: #E9D9FF;
+
+  text-shadow: 0 0 5px #E7D7FF;
+  box-shadow: 0 0 12px #CBBDEB, inset 0 0 10px #CBBDEB33;
+
   margin: 10px;
   cursor: pointer;
-  transition: 0.2s;
-  display: inline-flex;   /* 글자/아이콘 중앙 정렬 */
+  transition: 0.25s;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
 button:hover {
-  background: linear-gradient(145deg, #777, #333);
-  box-shadow: 0 0 25px #0ff, 0 0 10px #0ff inset;
-  text-shadow: 0 0 10px #0ff;
+  background: linear-gradient(145deg, #3e2b62, #1a1030);
+  box-shadow: 0 0 25px #E3D5FF, 0 0 12px #E3D5FF inset;
+  text-shadow: 0 0 12px #FFFFFF;
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px #D4C6EF;
+}
+
+/* bottom control layout */
+.controls {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+}
+
+.ctrl-btn {
+  font-size: 32px;
+  border-radius: 14px;
+  color: #E9D9FF;
+  background: linear-gradient(145deg, #2b1f44, #120c1f);
+  box-shadow:
+    0 0 12px #CBBDEB77,
+    inset 0 0 12px #CBBDEB55,
+    0 0 24px #CBBDEB44;
+}
+
+.ctrl-btn:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow:
+    0 0 22px #E3D5FF,
+    inset 0 0 16px #E3D5FF66;
 }
